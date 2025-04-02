@@ -1,5 +1,18 @@
+{% set page_title = "app.index.title" | trans %}
 {% extends "base.html.twig" %}
 
-{% block title %} COUCOU {% endblock %}
+{% block body %}
 
-{% block body %} BOUHHHH {% endblock %}
+<div class="card border-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">	Présentation haha</div>
+  <div class="card-body">
+    <h4 class="card-title">Primary card title</h4>
+    <p class="card-text">Bienvenue sur le site 3olen ahahahah !</p>
+  </div>
+</div>
+
+{% if name is not null %}
+	<a href="{{ path("app_hello_get", {name : name})}}" class="btn btn-secondary">Bonjour</a>
+{% endif %}
+
+{% endblock %}
