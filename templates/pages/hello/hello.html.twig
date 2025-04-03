@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{% if name is not null %}
+		<p> Bonjour {{ name }} !</p>
+	{% endif %}
+
+	<a href="{{ path("app_index_get") }}" class="btn btn-primary">Retour à l'accueil</a>
+{% endblock %}

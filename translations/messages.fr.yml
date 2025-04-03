@@ -1,0 +1,4 @@
+app.index.title : Page d'accueil
+app.index.welcome : Bienvenue sur notre site !
+
+app.hello.name.title : Bonjour %name%
