@@ -8,7 +8,7 @@
 {% endif %}
 
 {% if can_create_post %}
-	<a href="{{ path('app_post_create_get', )}}" class="btn btn-primary mb-2">création</a>
+	<a href="{{ path('app_post_create_get', )}}" class="btn btn-primary mb-2">➕​ Création</a>
 {% endif %}
 
 <div class="row">
@@ -24,7 +24,7 @@
 				<tbody>
 					{% for post in posts %}
 					<tr>
-						<td><a href"/">{{ post.title }}</a></td>
+						<td><a href="{{ path('app_post_show_post', {id: post.id}) }}">{{ post.title }}</a></td>
 						<td>{{ post.publishat|date('d/m/Y H:i:s') }}</td>
 					</tr>
 					{% endfor %}

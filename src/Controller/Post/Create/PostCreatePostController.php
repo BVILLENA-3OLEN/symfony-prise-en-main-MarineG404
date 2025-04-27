@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Post\Create;
 
 use App\Entity\Post;
+use App\Enum\Entity\RoleEnum;
 use App\Form\Type\PostType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
