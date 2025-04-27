@@ -29,6 +29,7 @@ class IndexGetController extends AbstractController {
 			parameters:[
 				"name" => $name,
 				"posts" => $allPosts,
+				"can_create_post" => $this->isGranted("ROLE_ADMIN"),
 			],
 		);
 	}

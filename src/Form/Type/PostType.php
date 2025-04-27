@@ -10,6 +10,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThan;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class PostType extends AbstractType
 {
@@ -18,12 +22,14 @@ class PostType extends AbstractType
 		$builder
 			->add('title', type:TextType::class, options: [
 				"label" => "Titre du post",
+				"constraints" => [new NotBlank(), new Length(max : 100)],
 				"attr" => [
 					"class" => "form-control",
 				]
 			])
 			->add('content', type:TextareaType::class, options:[
 				"label" => "Contenu du post",
+				"constraints" => [new NotBlank()],
 				"attr" => [
 					"class" => "form-control",
 				]
@@ -31,6 +37,10 @@ class PostType extends AbstractType
 			->add('publishat', type:DateTimeType::class ,options: [
 				'widget' => 'single_text',
 				"label" => "Date de publication",
+				"constraints" => [
+					new NotNull(),
+					new GreaterThan(value: new \DateTime("-1 month"))
+				],
 				"attr" => [
 					"class" => "form-control",
 				]
@@ -40,14 +50,16 @@ class PostType extends AbstractType
 				"attr" => [
 					"class" => "form-control",
 				]
-			])
-			->add("submit", type:SubmitType::class, options: [
+			]);
+
+		if ($builder->getDisabled()===false) {
+			$builder->add("submit", type:SubmitType::class, options: [
 				"label" => "Enregistrer",
 				"attr" => [
 					"class" => "btn btn-primary",
 				],
-			])
-		;
+			]);
+		}
 	}
 
     public function configureOptions(OptionsResolver $resolver): void

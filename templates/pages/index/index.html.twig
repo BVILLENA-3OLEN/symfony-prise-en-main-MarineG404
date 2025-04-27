@@ -3,19 +3,13 @@
 
 {% block body %}
 
-<div class="card border-primary mb-3" style="max-width: 20rem;">
-	<div class="card-header">Présentation haha</div>
-	<div class="card-body">
-		<h4 class="card-title">Primary card title</h4>
-		<p class="card-text">Bienvenue sur le site 3olen ahahahah !</p>
-	</div>
-</div>
-
 {% if name is not null %}
 	<a href="{{ path("app_hello_get", {name : name})}}" class="btn btn-secondary">Bonjour</a>
 {% endif %}
 
-<a href="{{ path('app_post_create_get', )}}" class="btn btn-primary mb-2">création</a>
+{% if can_create_post %}
+	<a href="{{ path('app_post_create_get', )}}" class="btn btn-primary mb-2">création</a>
+{% endif %}
 
 <div class="row">
 	<div class="col-md-12">
