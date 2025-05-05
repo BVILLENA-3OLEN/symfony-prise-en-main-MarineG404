@@ -12,6 +12,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 
 #[AsCommand(name: 'app:create-articles')]
+// symfony console app:create-articles "Tempora" "The best framework" "Ski"
 class CreateArticles extends Command {
 
 	private EntityManagerInterface $entityManager;
@@ -47,9 +48,8 @@ class CreateArticles extends Command {
 		$this->entityManager->persist(object: $post);
 		$this->entityManager->flush();
 
-		$output->writeln('✅ Article created successfully!');
+		$output->writeln('✅ Post created successfully!');
 
 		return Command::SUCCESS;
 	}
-
 }
